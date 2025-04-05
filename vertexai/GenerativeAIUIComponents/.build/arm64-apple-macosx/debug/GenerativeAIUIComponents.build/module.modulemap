@@ -1,0 +1,4 @@
+module GenerativeAIUIComponents {
+    header "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/GenerativeAIUIComponents-Swift.h"
+    requires objc
+}

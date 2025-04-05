@@ -1,0 +1,17 @@
+{
+  "": {
+    "swift-dependencies": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/master.swiftdeps"
+  },
+  "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/Sources/GenerativeAIUIComponents/InputField.swift": {
+    "dependencies": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/InputField.d",
+    "object": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/InputField.swift.o",
+    "swiftmodule": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/InputField~partial.swiftmodule",
+    "swift-dependencies": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/InputField.swiftdeps"
+  },
+  "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/Sources/GenerativeAIUIComponents/MultimodalInputField.swift": {
+    "dependencies": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/MultimodalInputField.d",
+    "object": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/MultimodalInputField.swift.o",
+    "swiftmodule": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/MultimodalInputField~partial.swiftmodule",
+    "swift-dependencies": "/Users/Shared/code-dump/quickstart-ios/vertexai/GenerativeAIUIComponents/.build/arm64-apple-macosx/debug/GenerativeAIUIComponents.build/MultimodalInputField.swiftdeps"
+  }
+}

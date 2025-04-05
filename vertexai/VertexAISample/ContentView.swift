@@ -35,6 +35,11 @@ struct ContentView: View {
           Label("Multi-modal", systemImage: "doc.richtext")
         }
         NavigationLink {
+          PhotoReasoningScreenTest()
+        } label: {
+          Label("Multi-modal Test", systemImage: "doc.richtext")
+        }
+        NavigationLink {
           ConversationScreen()
             .environmentObject(viewModel)
         } label: {
