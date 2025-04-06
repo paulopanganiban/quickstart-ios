@@ -10,6 +10,7 @@
 		5F297C3A2DA16BDE00A0596C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F297C392DA16BDE00A0596C /* GoogleService-Info.plist */; };
 		5F297C432DA1879B00A0596C /* PhotoReasoningScreenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C3D2DA1876B00A0596C /* PhotoReasoningScreenTest.swift */; };
 		5F297C462DA1891700A0596C /* PhotoReasoningViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */; };
+		5F297C492DA2477300A0596C /* Replicate in Frameworks */ = {isa = PBXBuildFile; productRef = 5F297C482DA2477300A0596C /* Replicate */; };
 		86C1F4832BC726150026816F /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */; };
 		86C1F4842BC726150026816F /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */; };
 		86D9CA8B2BED3EE1007D939E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 86D9CA8A2BED3EE1007D939E /* FirebaseAppCheck */; };
@@ -42,9 +43,8 @@
 		5F297C392DA16BDE00A0596C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F297C3B2DA1876B00A0596C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F297C3D2DA1876B00A0596C /* PhotoReasoningScreenTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReasoningScreenTest.swift; sourceTree = "<group>"; };
-		5F297C3F2DA1876B00A0596C /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
 		5F297C412DA1876B00A0596C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoReasoningViewModelTest.swift; path = GenerativeAIMultimodalSampleTest/ViewModels/PhotoReasoningViewModelTest.swift; sourceTree = "<group>"; };
+		5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModelTest.swift; sourceTree = "<group>"; };
 		86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
 		86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingViewModel.swift; sourceTree = "<group>"; };
 		8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +81,7 @@
 			files = (
 				886F95D82B17BA420036F07A /* MarkdownUI in Frameworks */,
 				86D9CAB52BED3EE1007D939E /* FirebaseStorage in Frameworks */,
+				5F297C492DA2477300A0596C /* Replicate in Frameworks */,
 				86D9CA8F2BED3EE1007D939E /* FirebaseAuth in Frameworks */,
 				86D9CA8B2BED3EE1007D939E /* FirebaseAppCheck in Frameworks */,
 				DEFECAAD2D7BB49700EF9621 /* FirebaseVertexAI in Frameworks */,
@@ -111,7 +112,7 @@
 		5F297C402DA1876B00A0596C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5F297C3F2DA1876B00A0596C /* PhotoReasoningViewModel.swift */,
+				5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -194,7 +195,6 @@
 		8848C8262B0D04BC007B434F = {
 			isa = PBXGroup;
 			children = (
-				5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */,
 				5F297C422DA1876B00A0596C /* GenerativeAIMultimodalSampleTest */,
 				DEFECAA82D7B4CCD00EF9621 /* ImagenScreen */,
 				88B8A9352B0FCBA700424728 /* GenerativeAIUIComponents */,
@@ -363,6 +363,7 @@
 				86D9CAB42BED3EE1007D939E /* FirebaseStorage */,
 				86D9CAB82BED3EE1007D939E /* FirebaseVertexAI */,
 				DEFECAAC2D7BB49700EF9621 /* FirebaseVertexAI */,
+				5F297C482DA2477300A0596C /* Replicate */,
 			);
 			productName = GenerativeAISample;
 			productReference = 8848C82F2B0D04BC007B434F /* VertexAISample.app */;
@@ -396,6 +397,7 @@
 				88209C212B0FBDF700F64795 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				DEA09AC32B1FCE22001962D9 /* XCRemoteSwiftPackageReference "NetworkImage" */,
 				DEFECAAB2D7BB49700EF9621 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5F297C472DA2477300A0596C /* XCRemoteSwiftPackageReference "replicate-swift" */,
 			);
 			productRefGroup = 8848C8302B0D04BC007B434F /* Products */;
 			projectDirPath = "";
@@ -652,6 +654,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F297C472DA2477300A0596C /* XCRemoteSwiftPackageReference "replicate-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/replicate/replicate-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.24.0;
+			};
+		};
 		88209C212B0FBDF700F64795 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -679,6 +689,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F297C482DA2477300A0596C /* Replicate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F297C472DA2477300A0596C /* XCRemoteSwiftPackageReference "replicate-swift" */;
+			productName = Replicate;
+		};
 		86D9CA8A2BED3EE1007D939E /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseAppCheck;
