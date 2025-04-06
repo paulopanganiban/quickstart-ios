@@ -11,6 +11,10 @@
 		5F297C432DA1879B00A0596C /* PhotoReasoningScreenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C3D2DA1876B00A0596C /* PhotoReasoningScreenTest.swift */; };
 		5F297C462DA1891700A0596C /* PhotoReasoningViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */; };
 		5F297C492DA2477300A0596C /* Replicate in Frameworks */ = {isa = PBXBuildFile; productRef = 5F297C482DA2477300A0596C /* Replicate */; };
+		5F297C4F2DA2A1F300A0596C /* GlassImageGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */; };
+		5F297C502DA2A1F300A0596C /* GlassInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */; };
+		5F297C512DA2A1F300A0596C /* GlassAppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */; };
+		5F297C532DA2A26900A0596C /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C522DA2A26900A0596C /* ThemeManager.swift */; };
 		86C1F4832BC726150026816F /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */; };
 		86C1F4842BC726150026816F /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */; };
 		86D9CA8B2BED3EE1007D939E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 86D9CA8A2BED3EE1007D939E /* FirebaseAppCheck */; };
@@ -45,6 +49,10 @@
 		5F297C3D2DA1876B00A0596C /* PhotoReasoningScreenTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReasoningScreenTest.swift; sourceTree = "<group>"; };
 		5F297C412DA1876B00A0596C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F297C452DA1891700A0596C /* PhotoReasoningViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModelTest.swift; sourceTree = "<group>"; };
+		5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassAppHeader.swift; sourceTree = "<group>"; };
+		5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassImageGrid.swift; sourceTree = "<group>"; };
+		5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassInputField.swift; sourceTree = "<group>"; };
+		5F297C522DA2A26900A0596C /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
 		86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingViewModel.swift; sourceTree = "<group>"; };
 		8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
@@ -333,6 +341,10 @@
 		DEFECAA82D7B4CCD00EF9621 /* ImagenScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5F297C522DA2A26900A0596C /* ThemeManager.swift */,
+				5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */,
+				5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */,
+				5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */,
 				DEFECAA62D7B4CCD00EF9621 /* ImagenScreen.swift */,
 				DEFECAA72D7B4CCD00EF9621 /* ImagenViewModel.swift */,
 			);
@@ -426,11 +438,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F297C532DA2A26900A0596C /* ThemeManager.swift in Sources */,
 				5F297C462DA1891700A0596C /* PhotoReasoningViewModelTest.swift in Sources */,
 				5F297C432DA1879B00A0596C /* PhotoReasoningScreenTest.swift in Sources */,
 				86C1F4832BC726150026816F /* FunctionCallingScreen.swift in Sources */,
 				886F95DF2B17D5010036F07A /* BouncingDots.swift in Sources */,
 				86C1F4842BC726150026816F /* FunctionCallingViewModel.swift in Sources */,
+				5F297C4F2DA2A1F300A0596C /* GlassImageGrid.swift in Sources */,
+				5F297C502DA2A1F300A0596C /* GlassInputField.swift in Sources */,
+				5F297C512DA2A1F300A0596C /* GlassAppHeader.swift in Sources */,
 				886F95DE2B17D5010036F07A /* ChatMessage.swift in Sources */,
 				88263BF12B239C11008AB09B /* ErrorDetailsView.swift in Sources */,
 				8848C8352B0D04BC007B434F /* ContentView.swift in Sources */,

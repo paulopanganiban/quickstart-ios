@@ -27,40 +27,80 @@ struct ImagenScreen: View {
 
   var body: some View {
     ZStack {
-      VStack {
-        InputField("Enter a prompt to generate an image", text: $viewModel.userInput) {
+      // Pink-purple gradient background
+      LinearGradient(
+        gradient: Gradient(colors: [
+          ThemeManager.Colors.pinkPurpleGradientStart,
+          ThemeManager.Colors.pinkPurpleGradientEnd
+        ]),
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+      )
+      .ignoresSafeArea()
+      
+      VStack(spacing: 16) {
+        // Glass App Header
+        GlassAppHeader(title: "Imagen", subtitle: "Create stunning AI-generated images") {
+          Button(action: {
+            // Add settings or info action here
+          }) {
+            Image(systemName: "info.circle")
+              .font(.title2)
+              .foregroundColor(ThemeManager.Colors.textPrimary)
+          }
+          .buttonStyle(GlassButtonStyle())
+        }
+        
+        // Glass input field
+        GlassInputField("Enter a prompt to generate an image", text: $viewModel.userInput, onSubmit: {
+          sendOrStop()
+        }) {
           Image(
-            systemName: viewModel.inProgress ? "stop.circle.fill" : "paperplane.circle.fill"
+            systemName: viewModel.inProgress ? "stop.circle.fill" : "sparkles"
           )
-          .font(.title)
+          .font(.title2)
         }
         .focused($focusedField, equals: .message)
-        .onSubmit { sendOrStop() }
-
-        ScrollView {
-          let spacing: CGFloat = 10
-          LazyVGrid(columns: [
-            GridItem(.fixed(UIScreen.main.bounds.width / 2 - spacing), spacing: spacing),
-            GridItem(.fixed(UIScreen.main.bounds.width / 2 - spacing), spacing: spacing),
-          ], spacing: spacing) {
-            ForEach(viewModel.images, id: \.self) { image in
-              Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width / 2 - spacing,
-                       height: UIScreen.main.bounds.width / 2 - spacing)
-                .cornerRadius(12)
-                .clipped()
+        
+        // Glass image grid
+        if !viewModel.images.isEmpty {
+          GlassImageGrid(images: viewModel.images)
+        } else {
+          // Empty state with glass effect
+          VStack {
+            Spacer()
+            
+            VStack(spacing: 20) {
+              Image(systemName: "photo.on.rectangle.angled")
+                .font(.system(size: 60))
+                .foregroundColor(ThemeManager.Colors.textSecondary)
+              
+              Text("Enter a prompt to generate images")
+                .font(.headline)
+                .foregroundColor(ThemeManager.Colors.textPrimary)
+                
+              Text("Try something like 'A sunset over mountains' or 'A futuristic city with flying cars'")
+                .font(.subheadline)
+                .foregroundColor(ThemeManager.Colors.textSecondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
             }
+            .padding(30)
+            .glassBackground(cornerRadius: ThemeManager.CornerRadius.large)
+            .padding()
+            
+            Spacer()
           }
-          .padding(.horizontal, spacing)
         }
       }
+      .padding(.top)
+      
+      // Glass progress overlay
       if viewModel.inProgress {
-        ProgressOverlay()
+        GlassProgressOverlay()
       }
     }
-    .navigationTitle("Imagen sample")
+    .navigationBarHidden(true)
     .onAppear {
       focusedField = .message
     }
@@ -78,26 +118,6 @@ struct ImagenScreen: View {
       viewModel.stop()
     } else {
       sendMessage()
-    }
-  }
-}
-
-struct ProgressOverlay: View {
-  var body: some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: 16)
-        .fill(Material.ultraThinMaterial)
-        .frame(width: 120, height: 100)
-        .shadow(radius: 8)
-
-      VStack(spacing: 12) {
-        ProgressView()
-          .scaleEffect(1.5)
-
-        Text("Loading...")
-          .font(.subheadline)
-          .foregroundColor(.secondary)
-      }
     }
   }
 }
