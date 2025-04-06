@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import SwiftUI
 import GenerativeAIUIComponents
+import SwiftUI
 
 struct ImagenScreen: View {
   @StateObject var viewModel = ImagenViewModel()
@@ -26,83 +26,104 @@ struct ImagenScreen: View {
   var focusedField: FocusedField?
 
   var body: some View {
-    ZStack {
-      // Pink-purple gradient background
-      LinearGradient(
-        gradient: Gradient(colors: [
-          ThemeManager.Colors.pinkPurpleGradientStart,
-          ThemeManager.Colors.pinkPurpleGradientEnd
-        ]),
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-      )
-      .ignoresSafeArea()
-      
-      VStack(spacing: 16) {
-        // Glass App Header
-        GlassAppHeader(title: "Imagen", subtitle: "Create stunning AI-generated images") {
-          Button(action: {
-            // Add settings or info action here
-          }) {
-            Image(systemName: "info.circle")
-              .font(.title2)
-              .foregroundColor(ThemeManager.Colors.textPrimary)
-          }
-          .buttonStyle(GlassButtonStyle())
-        }
-        
-        // Glass input field
-        GlassInputField("Enter a prompt to generate an image", text: $viewModel.userInput, onSubmit: {
-          sendOrStop()
-        }) {
-          Image(
-            systemName: viewModel.inProgress ? "stop.circle.fill" : "sparkles"
-          )
-          .font(.title2)
-        }
-        .focused($focusedField, equals: .message)
-        
-        // Glass image grid
-        if !viewModel.images.isEmpty {
-          GlassImageGrid(images: viewModel.images)
-        } else {
-          // Empty state with glass effect
-          VStack {
-            Spacer()
-            
-            VStack(spacing: 20) {
-              Image(systemName: "photo.on.rectangle.angled")
-                .font(.system(size: 60))
-                .foregroundColor(ThemeManager.Colors.textSecondary)
-              
-              Text("Enter a prompt to generate images")
-                .font(.headline)
-                .foregroundColor(ThemeManager.Colors.textPrimary)
-                
-              Text("Try something like 'A sunset over mountains' or 'A futuristic city with flying cars'")
-                .font(.subheadline)
-                .foregroundColor(ThemeManager.Colors.textSecondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
+    NavigationStack {
+      ZStack {
+        // Pink-purple gradient background
+        LinearGradient(
+          gradient: Gradient(colors: [
+            ThemeManager.Colors.pinkPurpleGradientStart,
+            ThemeManager.Colors.pinkPurpleGradientEnd,
+          ]),
+          startPoint: .topLeading,
+          endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+
+        ScrollView(showsIndicators: false) {
+          VStack(spacing: 24) {
+            // Glass App Header
+            GlassAppHeader(title: "Imagen", subtitle: "Create stunning AI-generated images")
+
+            // Custom input field to match the provided screenshot
+            HStack(spacing: 12) {
+              // Text field with glass effect
+              TextField("", text: $viewModel.userInput)
+                .padding(.vertical, 15)
+                .padding(.horizontal, 20)
+                .foregroundColor(.white)
+                .placeholder(when: viewModel.userInput.isEmpty) {
+                  Text("Enter a prompt to generate an image")
+                    .foregroundColor(ThemeManager.Colors.textSecondary)
+                    .padding(.horizontal, 20)
+                }
+                .background(
+                  RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
+                    .fill(ThemeManager.Materials.thinGlass)
+                )
+                .focused($focusedField, equals: .message)
+                .onSubmit { sendOrStop() }
+
+              // Sparkle button with clean look and no glow effects
+              Button(action: {
+                sendOrStop()
+              }) {
+                Image(systemName: viewModel.inProgress ? "stop.circle.fill" : "sparkles")
+                  .font(.system(size: 22, weight: .medium))
+                  .iconGradient()
+              }
+              .buttonStyle(GlowingButtonStyle())
             }
-            .padding(30)
-            .glassBackground(cornerRadius: ThemeManager.CornerRadius.large)
-            .padding()
-            
-            Spacer()
+            .padding(.horizontal)
+
+            // Glass image grid
+            if !viewModel.images.isEmpty {
+              GlassImageGrid(images: viewModel.images)
+                .padding(.top, 8)
+            } else {
+              // Empty state with glass effect
+              VStack {
+                Spacer()
+                  .frame(height: 40) // Add some space at the top of empty state
+
+                VStack(spacing: 20) {
+                  Image(systemName: "photo.on.rectangle.angled")
+                    .font(.system(size: 60))
+                    .foregroundColor(ThemeManager.Colors.textSecondary)
+
+                  Text("Enter a prompt to generate images")
+                    .font(.headline)
+                    .foregroundColor(ThemeManager.Colors.textPrimary)
+
+                  Text(
+                    "Try something like 'A sunset over mountains' or 'A futuristic city with flying cars'"
+                  )
+                  .font(.subheadline)
+                  .foregroundColor(ThemeManager.Colors.textSecondary)
+                  .multilineTextAlignment(.center)
+                  .padding(.horizontal)
+                }
+                .padding(20)
+                .glassBackground(cornerRadius: ThemeManager.CornerRadius.large)
+                .padding()
+
+                Spacer()
+                  .frame(minHeight: 40) // Add some space at the bottom of empty state
+              }
+            }
           }
+          .padding(.top)
+        }
+        .scrollDismissesKeyboard(.immediately)
+
+        // Glass progress overlay
+        if viewModel.inProgress {
+          GlassProgressOverlay()
         }
       }
-      .padding(.top)
-      
-      // Glass progress overlay
-      if viewModel.inProgress {
-        GlassProgressOverlay()
+      .navigationBarHidden(true)
+      .onAppear {
+        focusedField = .message
       }
-    }
-    .navigationBarHidden(true)
-    .onAppear {
-      focusedField = .message
     }
   }
 

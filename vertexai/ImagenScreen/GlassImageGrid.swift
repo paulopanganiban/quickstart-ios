@@ -1,10 +1,10 @@
 import SwiftUI
-import UIKit
+import UIKit // Using UIKit for UIImage
 
 struct GlassImageGrid: View {
     var images: [UIImage]
     var columns: Int = 2
-    var spacing: CGFloat = 12
+    var spacing: CGFloat = 16
     
     var body: some View {
         ScrollView {
@@ -15,6 +15,7 @@ struct GlassImageGrid: View {
                 }
             }
             .padding(.horizontal, spacing)
+            .padding(.vertical, 24)
         }
     }
 }

@@ -19,7 +19,7 @@ public struct GlassInputField<Label>: View where Label: View {
 
     public var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .bottom) {
+            HStack(alignment: .center) {
                 VStack(alignment: .leading) {
                     TextField(
                         title ?? "",
@@ -31,9 +31,13 @@ public struct GlassInputField<Label>: View where Label: View {
                     .onSubmit {
                         onSubmit?()
                     }
+                    .placeholder(when: text.isEmpty) {
+                        Text(title ?? "")
+                            .foregroundColor(ThemeManager.Colors.textPrimary.opacity(0.8))
+                    }
                 }
                 .padding(.horizontal, 12)
-                .padding(.vertical, 8)
+                .padding(.vertical, 12)
                 .background(
                     RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
                         .fill(ThemeManager.Materials.thinGlass)
@@ -44,10 +48,23 @@ public struct GlassInputField<Label>: View where Label: View {
                     onSubmit?()
                 }, label: label)
                 .buttonStyle(GlassButtonStyle())
-                .padding(.bottom, 4)
             }
         }
         .padding(8)
+    }
+}
+
+// Extension for placeholder styling
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content
+    ) -> some View {
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
     }
 }
 
@@ -79,8 +96,8 @@ struct GlassActionButton<Content: View>: View {
                 // Background gradient
                 LinearGradient(
                     gradient: Gradient(colors: [
-                        ThemeManager.Colors.primaryGradientStart,
-                        ThemeManager.Colors.primaryGradientEnd
+                        ThemeManager.Colors.pinkPurpleGradientStart,
+                        ThemeManager.Colors.pinkPurpleGradientEnd
                     ]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing

@@ -16,9 +16,24 @@ struct ThemeManager {
         static let pinkPurpleGradientStart = Color(red: 0.7, green: 0.2, blue: 0.5) // Pink
         static let pinkPurpleGradientEnd = Color(red: 0.2, green: 0.05, blue: 0.3) // Deep purple
         
+        // Purple gradient for buttons (adjusted to match the image)
+        static let purpleButtonStart = Color(red: 0.45, green: 0.25, blue: 0.85) // Medium purple
+        static let purpleButtonEnd = Color(red: 0.4, green: 0.2, blue: 0.75) // Slightly darker purple
+        
+        // Icon gradient colors (purple to white)
+        static let iconGradientStart = Color(red: 0.5, green: 0.3, blue: 1.0) // Deep purple
+        static let iconGradientEnd = Color(red: 0.9, green: 0.85, blue: 1.0) // Purplish white
+        
         static let accentColor = Color(red: 0.5, green: 0.3, blue: 0.9) // Bright purple
         static let textPrimary = Color.white
         static let textSecondary = Color.white.opacity(0.7)
+        
+        // Button states
+        static let buttonSelected = Color.white
+        static let buttonUnselected = Color(red: 0.3, green: 0.2, blue: 0.4).opacity(0.8)
+        
+        // Glow colors
+        static let glowColor = Color(red: 0.7, green: 0.5, blue: 1.0).opacity(0.8)
     }
     
     // MARK: - Materials
@@ -100,6 +115,28 @@ extension View {
             .padding(padding)
             .glassBackground()
     }
+    
+    // Apply a glow effect
+    func glow(color: Color = ThemeManager.Colors.glowColor, radius: CGFloat = 10) -> some View {
+        self
+            .shadow(color: color, radius: radius)
+    }
+    
+    // Apply a purple to white gradient mask
+    func iconGradient() -> some View {
+        self.overlay(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    ThemeManager.Colors.iconGradientStart,
+                    ThemeManager.Colors.iconGradientEnd
+                ]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+            .mask(self)
+        )
+        .foregroundColor(.clear) // Clear the original color to show only the gradient
+    }
 }
 
 // Custom glass button style
@@ -115,6 +152,52 @@ struct GlassButtonStyle: ButtonStyle {
                             ThemeManager.Shadows.small : ThemeManager.Shadows.medium)
             )
             .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            .animation(ThemeManager.Animation.standard, value: configuration.isPressed)
+    }
+}
+
+// Clean button style with solid background and no shadows
+struct GlowingButtonStyle: ButtonStyle {
+    var size: CGFloat = 48
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.title2)
+            .frame(width: size, height: size)
+            .background(
+                // Simple solid gradient background with no additional effects
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        ThemeManager.Colors.purpleButtonStart,
+                        ThemeManager.Colors.purpleButtonEnd
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .clipShape(RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium))
+            )
+            // No shadows or glows
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(ThemeManager.Animation.standard, value: configuration.isPressed)
+    }
+}
+
+// Selection Pill Button Style
+struct SelectionPillButtonStyle: ButtonStyle {
+    var isSelected: Bool = false
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.vertical, 12)
+            .padding(.horizontal, 24)
+            .foregroundColor(isSelected ? Color(UIColor.systemBackground) : ThemeManager.Colors.textPrimary)
+            .background(
+                RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
+                    .fill(isSelected ? 
+                          ThemeManager.Colors.buttonSelected : 
+                          ThemeManager.Colors.buttonUnselected)
+            )
+            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
             .animation(ThemeManager.Animation.standard, value: configuration.isPressed)
     }
 }
