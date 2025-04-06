@@ -45,7 +45,7 @@ struct VertexAISampleApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+        ImagenScreen()
     }
   }
 }
