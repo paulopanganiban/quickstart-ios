@@ -14,7 +14,18 @@
 		5F297C4F2DA2A1F300A0596C /* GlassImageGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */; };
 		5F297C502DA2A1F300A0596C /* GlassInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */; };
 		5F297C512DA2A1F300A0596C /* GlassAppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */; };
-		5F297C532DA2A26900A0596C /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C522DA2A26900A0596C /* ThemeManager.swift */; };
+		5F297C6D2DA3E80500A0596C /* DreamJournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C692DA3E80500A0596C /* DreamJournalModel.swift */; };
+		5F297C6E2DA3E80500A0596C /* DreamTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C6B2DA3E80500A0596C /* DreamTimelineView.swift */; };
+		5F297C6F2DA3E80500A0596C /* DreamJournalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C6A2DA3E80500A0596C /* DreamJournalScreen.swift */; };
+		5F297C702DA3E80500A0596C /* NewDreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C6C2DA3E80500A0596C /* NewDreamView.swift */; };
+		5F297C712DA3E80500A0596C /* DreamGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C682DA3E80500A0596C /* DreamGalleryView.swift */; };
+		5F297C762DA3E80E00A0596C /* GlassImageGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C742DA3E80E00A0596C /* GlassImageGrid.swift */; };
+		5F297C772DA3E80E00A0596C /* GlassInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C752DA3E80E00A0596C /* GlassInputField.swift */; };
+		5F297C782DA3E80E00A0596C /* GlassAppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C732DA3E80E00A0596C /* GlassAppHeader.swift */; };
+		5F297C792DA3E80E00A0596C /* ButtonPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C722DA3E80E00A0596C /* ButtonPreview.swift */; };
+		5F297C7B2DA3E82400A0596C /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C7A2DA3E82400A0596C /* ThemeManager.swift */; };
+		5F297C7D2DA3E82900A0596C /* PronouncSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F297C7C2DA3E82900A0596C /* PronouncSelector.swift */; };
+		5F297C7F2DA3E8A200A0596C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5F297C7E2DA3E8A200A0596C /* FirebaseFirestore */; };
 		86C1F4832BC726150026816F /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */; };
 		86C1F4842BC726150026816F /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */; };
 		86D9CA8B2BED3EE1007D939E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 86D9CA8A2BED3EE1007D939E /* FirebaseAppCheck */; };
@@ -52,7 +63,17 @@
 		5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassAppHeader.swift; sourceTree = "<group>"; };
 		5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassImageGrid.swift; sourceTree = "<group>"; };
 		5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassInputField.swift; sourceTree = "<group>"; };
-		5F297C522DA2A26900A0596C /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		5F297C682DA3E80500A0596C /* DreamGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamGalleryView.swift; sourceTree = "<group>"; };
+		5F297C692DA3E80500A0596C /* DreamJournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamJournalModel.swift; sourceTree = "<group>"; };
+		5F297C6A2DA3E80500A0596C /* DreamJournalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamJournalScreen.swift; sourceTree = "<group>"; };
+		5F297C6B2DA3E80500A0596C /* DreamTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamTimelineView.swift; sourceTree = "<group>"; };
+		5F297C6C2DA3E80500A0596C /* NewDreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDreamView.swift; sourceTree = "<group>"; };
+		5F297C722DA3E80E00A0596C /* ButtonPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPreview.swift; sourceTree = "<group>"; };
+		5F297C732DA3E80E00A0596C /* GlassAppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassAppHeader.swift; sourceTree = "<group>"; };
+		5F297C742DA3E80E00A0596C /* GlassImageGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassImageGrid.swift; sourceTree = "<group>"; };
+		5F297C752DA3E80E00A0596C /* GlassInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassInputField.swift; sourceTree = "<group>"; };
+		5F297C7A2DA3E82400A0596C /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		5F297C7C2DA3E82900A0596C /* PronouncSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronouncSelector.swift; sourceTree = "<group>"; };
 		86C1F47E2BC726150026816F /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
 		86C1F4802BC726150026816F /* FunctionCallingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingViewModel.swift; sourceTree = "<group>"; };
 		8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
@@ -92,6 +113,7 @@
 				5F297C492DA2477300A0596C /* Replicate in Frameworks */,
 				86D9CA8F2BED3EE1007D939E /* FirebaseAuth in Frameworks */,
 				86D9CA8B2BED3EE1007D939E /* FirebaseAppCheck in Frameworks */,
+				5F297C7F2DA3E8A200A0596C /* FirebaseFirestore in Frameworks */,
 				DEFECAAD2D7BB49700EF9621 /* FirebaseVertexAI in Frameworks */,
 				886F95E32B17D6630036F07A /* GenerativeAIUIComponents in Frameworks */,
 				86D9CAB92BED3EE1007D939E /* FirebaseVertexAI in Frameworks */,
@@ -341,7 +363,17 @@
 		DEFECAA82D7B4CCD00EF9621 /* ImagenScreen */ = {
 			isa = PBXGroup;
 			children = (
-				5F297C522DA2A26900A0596C /* ThemeManager.swift */,
+				5F297C7C2DA3E82900A0596C /* PronouncSelector.swift */,
+				5F297C7A2DA3E82400A0596C /* ThemeManager.swift */,
+				5F297C722DA3E80E00A0596C /* ButtonPreview.swift */,
+				5F297C732DA3E80E00A0596C /* GlassAppHeader.swift */,
+				5F297C742DA3E80E00A0596C /* GlassImageGrid.swift */,
+				5F297C752DA3E80E00A0596C /* GlassInputField.swift */,
+				5F297C682DA3E80500A0596C /* DreamGalleryView.swift */,
+				5F297C692DA3E80500A0596C /* DreamJournalModel.swift */,
+				5F297C6A2DA3E80500A0596C /* DreamJournalScreen.swift */,
+				5F297C6B2DA3E80500A0596C /* DreamTimelineView.swift */,
+				5F297C6C2DA3E80500A0596C /* NewDreamView.swift */,
 				5F297C4C2DA2A1F300A0596C /* GlassAppHeader.swift */,
 				5F297C4D2DA2A1F300A0596C /* GlassImageGrid.swift */,
 				5F297C4E2DA2A1F300A0596C /* GlassInputField.swift */,
@@ -376,6 +408,7 @@
 				86D9CAB82BED3EE1007D939E /* FirebaseVertexAI */,
 				DEFECAAC2D7BB49700EF9621 /* FirebaseVertexAI */,
 				5F297C482DA2477300A0596C /* Replicate */,
+				5F297C7E2DA3E8A200A0596C /* FirebaseFirestore */,
 			);
 			productName = GenerativeAISample;
 			productReference = 8848C82F2B0D04BC007B434F /* VertexAISample.app */;
@@ -438,15 +471,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F297C532DA2A26900A0596C /* ThemeManager.swift in Sources */,
+				5F297C502DA2A1F300A0596C /* GlassInputField.swift in Sources */,
+				DEFECAA92D7B4CCD00EF9621 /* ImagenViewModel.swift in Sources */,
+				5F297C6D2DA3E80500A0596C /* DreamJournalModel.swift in Sources */,
+				5F297C6E2DA3E80500A0596C /* DreamTimelineView.swift in Sources */,
+				5F297C6F2DA3E80500A0596C /* DreamJournalScreen.swift in Sources */,
+				5F297C702DA3E80500A0596C /* NewDreamView.swift in Sources */,
+				5F297C712DA3E80500A0596C /* DreamGalleryView.swift in Sources */,
+				5F297C4F2DA2A1F300A0596C /* GlassImageGrid.swift in Sources */,
+				5F297C512DA2A1F300A0596C /* GlassAppHeader.swift in Sources */,
+				DEFECAAA2D7B4CCD00EF9621 /* ImagenScreen.swift in Sources */,
 				5F297C462DA1891700A0596C /* PhotoReasoningViewModelTest.swift in Sources */,
 				5F297C432DA1879B00A0596C /* PhotoReasoningScreenTest.swift in Sources */,
 				86C1F4832BC726150026816F /* FunctionCallingScreen.swift in Sources */,
 				886F95DF2B17D5010036F07A /* BouncingDots.swift in Sources */,
 				86C1F4842BC726150026816F /* FunctionCallingViewModel.swift in Sources */,
-				5F297C4F2DA2A1F300A0596C /* GlassImageGrid.swift in Sources */,
-				5F297C502DA2A1F300A0596C /* GlassInputField.swift in Sources */,
-				5F297C512DA2A1F300A0596C /* GlassAppHeader.swift in Sources */,
 				886F95DE2B17D5010036F07A /* ChatMessage.swift in Sources */,
 				88263BF12B239C11008AB09B /* ErrorDetailsView.swift in Sources */,
 				8848C8352B0D04BC007B434F /* ContentView.swift in Sources */,
@@ -455,9 +494,13 @@
 				886F95E02B17D5010036F07A /* ConversationViewModel.swift in Sources */,
 				886F95DD2B17D5010036F07A /* MessageView.swift in Sources */,
 				886F95DC2B17BAEF0036F07A /* PhotoReasoningScreen.swift in Sources */,
-				DEFECAA92D7B4CCD00EF9621 /* ImagenViewModel.swift in Sources */,
-				DEFECAAA2D7B4CCD00EF9621 /* ImagenScreen.swift in Sources */,
+				5F297C7D2DA3E82900A0596C /* PronouncSelector.swift in Sources */,
 				886F95DB2B17BAEF0036F07A /* PhotoReasoningViewModel.swift in Sources */,
+				5F297C762DA3E80E00A0596C /* GlassImageGrid.swift in Sources */,
+				5F297C772DA3E80E00A0596C /* GlassInputField.swift in Sources */,
+				5F297C782DA3E80E00A0596C /* GlassAppHeader.swift in Sources */,
+				5F297C7B2DA3E82400A0596C /* ThemeManager.swift in Sources */,
+				5F297C792DA3E80E00A0596C /* ButtonPreview.swift in Sources */,
 				886F95E12B17D5010036F07A /* ConversationScreen.swift in Sources */,
 				88263BF02B239C09008AB09B /* ErrorView.swift in Sources */,
 				886F95D62B17BA010036F07A /* SummarizeViewModel.swift in Sources */,
@@ -709,6 +752,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5F297C472DA2477300A0596C /* XCRemoteSwiftPackageReference "replicate-swift" */;
 			productName = Replicate;
+		};
+		5F297C7E2DA3E8A200A0596C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEFECAAB2D7BB49700EF9621 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		86D9CA8A2BED3EE1007D939E /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;

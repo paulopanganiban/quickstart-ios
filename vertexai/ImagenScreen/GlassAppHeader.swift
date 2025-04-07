@@ -43,7 +43,7 @@ struct GlassAppHeader: View {
             .background(
                 RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
                     .fill(ThemeManager.Materials.thinGlass)
-                    .shadow(radius: ThemeManager.Shadows.medium)
+                  
             )
         }
         .padding(.horizontal)

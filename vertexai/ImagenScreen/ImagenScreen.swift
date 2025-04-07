@@ -28,93 +28,9 @@ struct ImagenScreen: View {
   var body: some View {
     NavigationStack {
       ZStack {
-        // Pink-purple gradient background
-        LinearGradient(
-          gradient: Gradient(colors: [
-            ThemeManager.Colors.pinkPurpleGradientStart,
-            ThemeManager.Colors.pinkPurpleGradientEnd,
-          ]),
-          startPoint: .topLeading,
-          endPoint: .bottomTrailing
-        )
-        .ignoresSafeArea()
-
-        ScrollView(showsIndicators: false) {
-          VStack(spacing: 24) {
-            // Glass App Header
-            GlassAppHeader(title: "Imagen", subtitle: "Create stunning AI-generated images")
-
-            // Custom input field to match the provided screenshot
-            HStack(spacing: 12) {
-              // Text field with glass effect
-              TextField("", text: $viewModel.userInput)
-                .padding(.vertical, 15)
-                .padding(.horizontal, 20)
-                .foregroundColor(.white)
-                .placeholder(when: viewModel.userInput.isEmpty) {
-                  Text("Enter a prompt to generate an image")
-                    .foregroundColor(ThemeManager.Colors.textSecondary)
-                    .padding(.horizontal, 20)
-                }
-                .background(
-                  RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
-                    .fill(ThemeManager.Materials.thinGlass)
-                )
-                .focused($focusedField, equals: .message)
-                .onSubmit { sendOrStop() }
-
-              // Sparkle button with clean look and no glow effects
-              Button(action: {
-                sendOrStop()
-              }) {
-                Image(systemName: viewModel.inProgress ? "stop.circle.fill" : "sparkles")
-                  .font(.system(size: 22, weight: .medium))
-                  .iconGradient()
-              }
-              .buttonStyle(GlowingButtonStyle())
-            }
-            .padding(.horizontal)
-
-            // Glass image grid
-            if !viewModel.images.isEmpty {
-              GlassImageGrid(images: viewModel.images)
-                .padding(.top, 8)
-            } else {
-              // Empty state with glass effect
-              VStack {
-                Spacer()
-                  .frame(height: 40) // Add some space at the top of empty state
-
-                VStack(spacing: 20) {
-                  Image(systemName: "photo.on.rectangle.angled")
-                    .font(.system(size: 60))
-                    .foregroundColor(ThemeManager.Colors.textSecondary)
-
-                  Text("Enter a prompt to generate images")
-                    .font(.headline)
-                    .foregroundColor(ThemeManager.Colors.textPrimary)
-
-                  Text(
-                    "Try something like 'A sunset over mountains' or 'A futuristic city with flying cars'"
-                  )
-                  .font(.subheadline)
-                  .foregroundColor(ThemeManager.Colors.textSecondary)
-                  .multilineTextAlignment(.center)
-                  .padding(.horizontal)
-                }
-                .padding(20)
-                .glassBackground(cornerRadius: ThemeManager.CornerRadius.large)
-                .padding()
-
-                Spacer()
-                  .frame(minHeight: 40) // Add some space at the bottom of empty state
-              }
-            }
-          }
-          .padding(.top)
-        }
-        .scrollDismissesKeyboard(.immediately)
-
+        backgroundGradient
+        mainContent
+        
         // Glass progress overlay
         if viewModel.inProgress {
           GlassProgressOverlay()
@@ -124,6 +40,109 @@ struct ImagenScreen: View {
       .onAppear {
         focusedField = .message
       }
+    }
+  }
+  
+  // MARK: - Helper Views
+  
+  private var backgroundGradient: some View {
+    LinearGradient(
+      gradient: Gradient(colors: [
+        ThemeManager.Colors.pinkPurpleGradientStart,
+        ThemeManager.Colors.pinkPurpleGradientEnd,
+      ]),
+      startPoint: .topLeading,
+      endPoint: .bottomTrailing
+    )
+    .ignoresSafeArea()
+  }
+  
+  private var mainContent: some View {
+    ScrollView(showsIndicators: false) {
+      VStack(spacing: 24) {
+        // Glass App Header
+        GlassAppHeader(title: "Imagen", subtitle: "Create stunning AI-generated images")
+        
+        promptInputSection
+        
+        imageResultsSection
+      }
+      .padding(.top)
+    }
+    .scrollDismissesKeyboard(.immediately)
+  }
+  
+  private var promptInputSection: some View {
+    HStack(spacing: 12) {
+      // Text field with glass effect
+      TextField("", text: $viewModel.userInput)
+        .padding(.vertical, 15)
+        .padding(.horizontal, 20)
+        .foregroundColor(.white)
+        .placeholder(when: viewModel.userInput.isEmpty) {
+          Text("Enter a prompt to generate an image")
+            .foregroundColor(ThemeManager.Colors.textSecondary)
+            .padding(.horizontal, 20)
+        }
+        .background(
+          RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
+            .fill(ThemeManager.Materials.thinGlass)
+        )
+        .focused($focusedField, equals: .message)
+        .onSubmit { sendOrStop() }
+      
+      // Sparkle button with clean look and no glow effects
+      Button(action: {
+        sendOrStop()
+      }) {
+        Image(systemName: viewModel.inProgress ? "stop.circle.fill" : "sparkles")
+          .font(.system(size: 22, weight: .medium))
+          .iconGradient()
+      }
+      .buttonStyle(GlowingButtonStyle())
+    }
+    .padding(.horizontal)
+  }
+  
+  private var imageResultsSection: some View {
+    Group {
+      if !viewModel.images.isEmpty {
+        GlassImageGrid(images: viewModel.images)
+          .padding(.top, 8)
+      } else {
+        emptyStateView
+      }
+    }
+  }
+  
+  private var emptyStateView: some View {
+    VStack {
+      Spacer()
+        .frame(height: 40) // Add some space at the top of empty state
+      
+      VStack(spacing: 20) {
+        Image(systemName: "photo.on.rectangle.angled")
+          .font(.system(size: 60))
+          .foregroundColor(ThemeManager.Colors.textSecondary)
+        
+        Text("Enter a prompt to generate images")
+          .font(.headline)
+          .foregroundColor(ThemeManager.Colors.textPrimary)
+        
+        Text(
+          "Try something like 'A sunset over mountains' or 'A futuristic city with flying cars'"
+        )
+        .font(.subheadline)
+        .foregroundColor(ThemeManager.Colors.textSecondary)
+        .multilineTextAlignment(.center)
+        .padding(.horizontal)
+      }
+      .padding(20)
+      .glassBackground(cornerRadius: ThemeManager.CornerRadius.large)
+      .padding()
+      
+      Spacer()
+        .frame(minHeight: 40) // Add some space at the bottom of empty state
     }
   }
 

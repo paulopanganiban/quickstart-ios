@@ -22,7 +22,7 @@ struct GlassImageGrid: View {
 
 struct ImageTile: View {
     var image: UIImage
-    @State private var isPressed = false
+    @State private var isShowingDetail = false
     
     var body: some View {
         ZStack {
@@ -32,38 +32,76 @@ struct ImageTile: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium))
-                
-            // Glass overlay on press
-            if isPressed {
-                RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
-                    .fill(ThemeManager.Materials.thinGlass)
-                    .overlay(
-                        HStack {
-                            Button(action: {
-                                // Save image
-                            }) {
-                                Label("Save", systemImage: "square.and.arrow.down")
-                                    .foregroundColor(ThemeManager.Colors.textPrimary)
-                            }
-                            .buttonStyle(GlassButtonStyle())
-                            
-                            Button(action: {
-                                // Share image
-                            }) {
-                                Label("Share", systemImage: "square.and.arrow.up")
-                                    .foregroundColor(ThemeManager.Colors.textPrimary)
-                            }
-                            .buttonStyle(GlassButtonStyle())
-                        }
-                        .padding()
-                    )
-            }
         }
-        .shadow(radius: isPressed ? ThemeManager.Shadows.medium : ThemeManager.Shadows.small)
         .onTapGesture {
-            withAnimation(ThemeManager.Animation.standard) {
-                isPressed.toggle()
+            isShowingDetail = true
+        }
+        .sheet(isPresented: $isShowingDetail) {
+            ImageDetailSheet(image: image)
+        }
+    }
+}
+
+struct ImageDetailSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    var image: UIImage
+    
+    var body: some View {
+        if #available(iOS 16.4, *) {
+            ZStack {
+                // Background blur
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 20) {
+                    // Drag indicator
+                    RoundedRectangle(cornerRadius: 2.5)
+                        .fill(ThemeManager.Colors.textSecondary)
+                        .frame(width: 36, height: 5)
+                        .padding(.top, 8)
+                    
+                    // Large image view
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: UIScreen.main.bounds.height * 0.4)
+                        .clipShape(RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.large))
+                    
+                    // Action buttons in a glass container
+                    HStack(spacing: 16) {
+                        Button(action: {
+                            // Save image
+                        }) {
+                            Label("Save", systemImage: "square.and.arrow.down")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(GlassButtonStyle())
+                        
+                        Button(action: {
+                            // Share image
+                        }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(GlassButtonStyle())
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .background(
+                        RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.large)
+                            .fill(ThemeManager.Materials.regularGlass)
+                    )
+                    .padding(.horizontal)
+                }
+                .padding(.bottom, 20)
             }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.hidden) // We have our custom indicator
+        } else {
+            // Fallback on earlier versions
         }
     }
 }

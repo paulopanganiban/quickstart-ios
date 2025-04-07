@@ -41,7 +41,7 @@ public struct GlassInputField<Label>: View where Label: View {
                 .background(
                     RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
                         .fill(ThemeManager.Materials.thinGlass)
-                        .shadow(radius: ThemeManager.Shadows.small)
+                        // .shadow(radius: ThemeManager.Shadows.small)
                 )
 
                 Button(action: {
