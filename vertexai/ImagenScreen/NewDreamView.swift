@@ -29,6 +29,7 @@ struct NewDreamView: View {
     @State private var selectedImage: UIImage?
     @State private var isGeneratingImage: Bool = false
     @State private var showDatePicker: Bool = false
+    @StateObject private var imagenViewModel = ImagenViewModel()
     
     var body: some View {
         ZStack {
@@ -39,6 +40,7 @@ struct NewDreamView: View {
                     headerSection
                     imagePickerSection
                     titleSection
+                    aiImageSection
                     dateSection
                     moodSection
                     tagsSection
@@ -150,17 +152,46 @@ struct NewDreamView: View {
                 .font(.headline)
                 .foregroundColor(.white)
             
-            TextField("", text: $title)
-                .placeholder(when: title.isEmpty) {
-                    Text("Give your dream a title")
-                        .foregroundColor(ThemeManager.Colors.textSecondary)
+            HStack {
+                TextField("", text: $title)
+                    .placeholder(when: title.isEmpty) {
+                        Text("Give your dream a title")
+                            .foregroundColor(ThemeManager.Colors.textSecondary)
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
+                            .fill(ThemeManager.Materials.thinGlass)
+                    )
+                
+                // AI Generation Button
+                Button(action: {
+                    generateAIImage()
+                }) {
+                    Image(systemName: imagenViewModel.inProgress ? "stop.circle.fill" : "sparkles")
+                        .font(.system(size: 22, weight: .medium))
+                        .iconGradient()
                 }
-                .foregroundColor(.white)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: ThemeManager.CornerRadius.medium)
-                        .fill(ThemeManager.Materials.thinGlass)
-                )
+                .buttonStyle(GlowingButtonStyle())
+                .disabled(title.isEmpty)
+                .opacity(title.isEmpty ? 0.6 : 1)
+            }
+        }
+    }
+    
+    // New AI Image Results Section
+    private var aiImageSection: some View {
+        Group {
+            if !imagenViewModel.images.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("AI Generated Images")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    
+                    GlassImageGrid(images: imagenViewModel.images)
+                }
+            }
         }
     }
     
@@ -210,14 +241,11 @@ struct NewDreamView: View {
                 .font(.headline)
                 .foregroundColor(.white)
             
-            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(DreamMood.allCases, id: \.self) { currentMood in
                         moodButton(for: currentMood)
                     }
-                }
-            }
-        }
+                }        }
     }
     
     private func moodButton(for currentMood: DreamMood) -> some View {
@@ -421,6 +449,24 @@ struct NewDreamView: View {
                 dismiss()
             } catch {
                 // Error is already displayed in the viewModel
+            }
+        }
+    }
+    
+    // New function to generate AI images
+    private func generateAIImage() {
+        if imagenViewModel.inProgress {
+            imagenViewModel.stop()
+        } else if !title.isEmpty {
+            let prompt = "Dream scene: \(title)"
+            Task {
+                await imagenViewModel.generateImage(prompt: prompt)
+                
+                // If images were generated and we have no selected image yet, 
+                // use the first AI image as the selected image
+                if !imagenViewModel.images.isEmpty && selectedImage == nil {
+                    selectedImage = imagenViewModel.images.first
+                }
             }
         }
     }
